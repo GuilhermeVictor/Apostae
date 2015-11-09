@@ -83,15 +83,17 @@ public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewH
         final GridSLM.LayoutParams lp = GridSLM.LayoutParams.from(itemView.getLayoutParams());
         // Overrides xml attrs, could use different layouts too.
         if (item.isHeader) {
-            lp.headerDisplay = GridSLM.LayoutParams.HEADER_ALIGN_START;
+            lp.headerDisplay = GridSLM.LayoutParams.HEADER_STICKY;// ALIGN_START;
+            /*
             if (lp.isHeaderInline() || (mMarginsFixed && !lp.isHeaderOverlay())) {
                 lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
             } else {
                 lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
-            }
+            }*/
+            //lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
 
-            lp.headerEndMarginIsAuto = !mMarginsFixed;
-            lp.headerStartMarginIsAuto = !mMarginsFixed;
+            lp.headerEndMarginIsAuto = false;
+            lp.headerStartMarginIsAuto = false;
         }
         lp.setSlm(GridSLM.ID);
         lp.setColumnWidth(mContext.getResources().getDimensionPixelSize(R.dimen.grid_column_width));

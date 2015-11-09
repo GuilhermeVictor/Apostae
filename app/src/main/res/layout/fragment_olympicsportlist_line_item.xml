@@ -5,8 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layoutDirection="locale"
+    android:orientation="horizontal"
     android:padding="16dip"
     >
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/emma"
+        />
 
     <TextView
         android:id="@+id/text"
