@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sport_names">
+        <item>@string/archery</item>
+        <item>@string/athletics</item>
+        <item>@string/badminton</item>
+        <item>@string/basketball</item>
+        <item>@string/boxing</item>
+        <item>@string/canoe</item>
+        <item>@string/cycling</item>
+        <item>@string/volleyball</item>
+    </string-array>
+</resources>

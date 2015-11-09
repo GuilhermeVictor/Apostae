@@ -30,18 +30,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.ksoichiro.android.observablescrollview.ObservableListView;
-import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
-import com.github.ksoichiro.android.observablescrollview.ScrollState;
-
 import java.lang.reflect.Field;
 
 import mc750.cronos.apostae.library.OnCreateListViewListener;
-import mc750.cronos.apostae.ui.ObservablePagerAdapter;
 import mc750.cronos.apostae.R;
+import mc750.cronos.apostae.ui.PagerAdapter;
 
 public class NavigationDrawerActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OlympicSportListFragment.OnFragmentInteractionListener, ObservableScrollViewCallbacks {
+        implements NavigationView.OnNavigationItemSelectedListener, OlympicSportListFragment.OnFragmentInteractionListener {
 
     private EditText toolbarSearchView;
     private View searchContainer;
@@ -51,7 +47,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private ViewPager viewPager;
-    private ObservablePagerAdapter adapter;
+    private PagerAdapter adapter;
     private NavigationDrawerActivity self;
 
     private boolean toolbarHomeButtonAnimating = false;
@@ -87,12 +83,13 @@ public class NavigationDrawerActivity extends AppCompatActivity
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         viewPager = (ViewPager) findViewById(R.id.main_pager);
-        adapter = new ObservablePagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), new OnCreateListViewListener() {
+        adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount()/*, new OnCreateListViewListener() {
             @Override
             public void onCreateListViewListener(ObservableListView observableListView) {
-                observableListView.setScrollViewCallbacks(self);
+                //for now let this animation out
+                //observableListView.setScrollViewCallbacks(self);
             }
-        });
+        }*/);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -226,19 +223,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camara) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -345,31 +329,5 @@ public class NavigationDrawerActivity extends AppCompatActivity
     @Override
     public void onFragmentInteraction(String id) {
 
-    }
-
-    /* ObservableScrollViewCallbacks */
-
-    @Override
-    public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {
-
-    }
-
-    @Override
-    public void onDownMotionEvent() {
-
-    }
-
-    @Override
-    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
-        ActionBar ab = getSupportActionBar();
-        if (scrollState == ScrollState.UP) {
-            if (ab.isShowing()) {
-                ab.hide();
-            }
-        } else if (scrollState == ScrollState.DOWN) {
-            if (!ab.isShowing()) {
-                ab.show();
-            }
-        }
     }
 }

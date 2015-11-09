@@ -9,15 +9,15 @@ import mc750.cronos.apostae.library.ObservableScrollViewFragment;
 import mc750.cronos.apostae.library.OnCreateListViewListener;
 import mc750.cronos.apostae.main.OlympicSportListFragment;
 
-public class ObservablePagerAdapter extends FragmentStatePagerAdapter {
+public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
     private OnCreateListViewListener createListViewListener;
 
-    public ObservablePagerAdapter(FragmentManager fm, int NumOfTabs) {
+    public PagerAdapter(FragmentManager fm, int NumOfTabs) {
         this(fm, NumOfTabs, null);
     }
 
-    public ObservablePagerAdapter(FragmentManager fm, int NumOfTabs, OnCreateListViewListener createListViewListener) {
+    public PagerAdapter(FragmentManager fm, int NumOfTabs, OnCreateListViewListener createListViewListener) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
         this.createListViewListener = createListViewListener;
@@ -40,7 +40,7 @@ public class ObservablePagerAdapter extends FragmentStatePagerAdapter {
                 tab = null;
         }
 
-        this.setScrollCallbacks(tab);
+        //this.setScrollCallbacks(tab);
 
         return tab;
     }
@@ -48,12 +48,5 @@ public class ObservablePagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return mNumOfTabs;
-    }
-
-    public void setScrollCallbacks(Fragment fragment) {
-        if (fragment != null) {
-            ObservableScrollViewFragment viewFragment = (ObservableScrollViewFragment) fragment;
-            viewFragment.setOnCreateViewListener(this.createListViewListener);
-        }
     }
 }

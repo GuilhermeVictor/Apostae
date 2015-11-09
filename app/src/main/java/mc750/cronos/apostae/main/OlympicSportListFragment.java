@@ -3,21 +3,19 @@ package mc750.cronos.apostae.main;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.TextView;
-
-import com.github.ksoichiro.android.observablescrollview.ObservableListView;
 
 import mc750.cronos.apostae.R;
-import mc750.cronos.apostae.library.ObservableScrollViewFragment;
+import mc750.cronos.apostae.ui.OlympicSportsAdapter;
 import mc750.cronos.apostae.library.OnCreateListViewListener;
 import mc750.cronos.apostae.main.dummy.DummyContent;
+
+import com.tonicartos.superslim.LayoutManager;
 
 /**
  * A fragment representing a list of Items.
@@ -28,7 +26,7 @@ import mc750.cronos.apostae.main.dummy.DummyContent;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class OlympicSportListFragment extends Fragment implements AbsListView.OnItemClickListener, ObservableScrollViewFragment {
+public class OlympicSportListFragment extends Fragment implements AbsListView.OnItemClickListener /*, ObservableScrollViewFragment */ {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,16 +41,18 @@ public class OlympicSportListFragment extends Fragment implements AbsListView.On
 
     private OnCreateListViewListener createListViewListener;
 
+    private ViewHolder mViews;
+
     /**
      * The fragment's ListView/GridView.
      */
-    private ObservableListView mListView;
+    private RecyclerView mRecyclerView;
 
     /**
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
      */
-    private ListAdapter mAdapter;
+    private OlympicSportsAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
     public static OlympicSportListFragment newInstance(String param1, String param2) {
@@ -79,28 +79,31 @@ public class OlympicSportListFragment extends Fragment implements AbsListView.On
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_olympicsportlist, container, false);
+        View view = inflater.inflate(R.layout.fragment_olympicsportlist_grid, container, false);
 
         // Set the adapter
-        mListView = (ObservableListView) view.findViewById(android.R.id.list);
-        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        mRecyclerView.setAdapter(mAdapter);
 
-        // Set OnItemClickListener so we can be notified on item clicks
-        mListView.setOnItemClickListener(this);
-
-        if (this.createListViewListener != null)
-            this.createListViewListener.onCreateListViewListener(mListView);
+        //if (this.createListViewListener != null)
+        //    this.createListViewListener.onCreateListViewListener(mRecyclerView);
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        mViews = new ViewHolder(view);
+        mViews.initViews(new LayoutManager(getActivity()));
+        mAdapter = new OlympicSportsAdapter(getActivity());
+        mViews.setAdapter(mAdapter);
     }
 
     @Override
@@ -130,19 +133,6 @@ public class OlympicSportListFragment extends Fragment implements AbsListView.On
     }
 
     /**
-     * The default content for this Fragment has a TextView that is shown when
-     * the list is empty. If you would like to change the text, call this method
-     * to supply the text it should use.
-     */
-    public void setEmptyText(CharSequence emptyText) {
-        View emptyView = mListView.getEmptyView();
-
-        if (emptyView instanceof TextView) {
-            ((TextView) emptyView).setText(emptyText);
-        }
-    }
-
-    /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
@@ -158,7 +148,7 @@ public class OlympicSportListFragment extends Fragment implements AbsListView.On
     }
 
 
-    /* ObservableScrollViewFragment */
+    /* ObservableScrollViewFragment
 
     @Override
     public ObservableListView getListView() {
@@ -169,5 +159,32 @@ public class OlympicSportListFragment extends Fragment implements AbsListView.On
     @Override
     public void setOnCreateViewListener(OnCreateListViewListener l) {
         this.createListViewListener = l;
+    }
+    */
+
+    private static class ViewHolder {
+
+        private final RecyclerView mRecyclerView;
+
+
+        public ViewHolder(View view) {
+            mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        }
+
+        public void initViews(LayoutManager lm) {
+            mRecyclerView.setLayoutManager(lm);
+        }
+
+        public void scrollToPosition(int position) {
+            mRecyclerView.scrollToPosition(position);
+        }
+
+        public void setAdapter(RecyclerView.Adapter<?> adapter) {
+            mRecyclerView.setAdapter(adapter);
+        }
+
+        public void smoothScrollToPosition(int position) {
+            mRecyclerView.smoothScrollToPosition(position);
+        }
     }
 }

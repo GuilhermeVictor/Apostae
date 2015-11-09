@@ -1,10 +1,10 @@
 package mc750.cronos.apostae.library;
 
-import com.github.ksoichiro.android.observablescrollview.ObservableListView;
+//import com.github.ksoichiro.android.observablescrollview.ObservableListView;
 
 public interface ObservableScrollViewFragment {
 
-    ObservableListView getListView();
+    //ObservableListView getListView();
 
     void setOnCreateViewListener(OnCreateListViewListener l);
 }
