@@ -2,21 +2,18 @@ package mc750.cronos.apostae.main;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.app.ListFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import mc750.cronos.apostae.R;
-import mc750.cronos.apostae.main.dummy.DummyContent;
-import mc750.cronos.apostae.ui.OlympicSportsAdapter;
+import mc750.cronos.apostae.library.ObservableScrollViewFragment;
+import mc750.cronos.apostae.library.OnCreateListViewListener;
 import mc750.cronos.apostae.ui.PopularAdapter;
-import mc750.cronos.apostae.ui.PopularViewHolder;
+
 
 /**
  * A fragment representing a list of Items.
@@ -25,7 +22,7 @@ import mc750.cronos.apostae.ui.PopularViewHolder;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class PopularListFragment extends Fragment {
+public class PopularListFragment extends Fragment implements ObservableScrollViewFragment {
 
     private OnFragmentInteractionListener mListener;
 
@@ -37,6 +34,8 @@ public class PopularListFragment extends Fragment {
     private PopularAdapter mAdapter;
 
     private PopularViewHolder mViews;
+
+    private OnCreateListViewListener createListViewListener;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -60,8 +59,8 @@ public class PopularListFragment extends Fragment {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.popular_recycler_view);
         mRecyclerView.setAdapter(mAdapter);
 
-        //if (this.createListViewListener != null)
-        //    this.createListViewListener.onCreateListViewListener(mRecyclerView);
+        if (this.createListViewListener != null)
+            this.createListViewListener.onCreateListViewListener(mRecyclerView);
 
         return view;
     }
@@ -91,6 +90,11 @@ public class PopularListFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void setOnCreateViewListener(OnCreateListViewListener l) {
+        this.createListViewListener = l;
     }
 
     /**

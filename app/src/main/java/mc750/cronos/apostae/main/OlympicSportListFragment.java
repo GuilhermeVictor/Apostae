@@ -11,6 +11,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 
 import mc750.cronos.apostae.R;
+import mc750.cronos.apostae.library.ObservableScrollViewFragment;
 import mc750.cronos.apostae.ui.OlympicSportsAdapter;
 import mc750.cronos.apostae.library.OnCreateListViewListener;
 import mc750.cronos.apostae.main.dummy.DummyContent;
@@ -26,7 +27,7 @@ import com.tonicartos.superslim.LayoutManager;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class OlympicSportListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class OlympicSportListFragment extends Fragment implements AbsListView.OnItemClickListener, ObservableScrollViewFragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,22 +55,11 @@ public class OlympicSportListFragment extends Fragment implements AbsListView.On
      */
     private OlympicSportsAdapter mAdapter;
 
-    // TODO: Rename and change types of parameters
-    public static OlympicSportListFragment newInstance(String param1, String param2) {
-        OlympicSportListFragment fragment = new OlympicSportListFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public OlympicSportListFragment() {
-    }
+    public OlympicSportListFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,8 +80,8 @@ public class OlympicSportListFragment extends Fragment implements AbsListView.On
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         mRecyclerView.setAdapter(mAdapter);
 
-        //if (this.createListViewListener != null)
-        //    this.createListViewListener.onCreateListViewListener(mRecyclerView);
+        if (this.createListViewListener != null)
+            createListViewListener.onCreateListViewListener(this.mRecyclerView);
 
         return view;
     }
@@ -148,19 +138,12 @@ public class OlympicSportListFragment extends Fragment implements AbsListView.On
     }
 
 
-    /* ObservableScrollViewFragment
-
-    @Override
-    public ObservableListView getListView() {
-
-        return mListView;
-    }
-
+    /* ObservableScrollViewFragment */
     @Override
     public void setOnCreateViewListener(OnCreateListViewListener l) {
         this.createListViewListener = l;
     }
-    */
+
 
     private static class ViewHolder {
 

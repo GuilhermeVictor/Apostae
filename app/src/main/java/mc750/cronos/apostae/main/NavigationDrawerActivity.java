@@ -11,9 +11,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -33,6 +34,8 @@ import android.widget.TextView;
 import java.lang.reflect.Field;
 
 import mc750.cronos.apostae.R;
+import mc750.cronos.apostae.library.OnCreateListViewListener;
+import mc750.cronos.apostae.library.Utils;
 import mc750.cronos.apostae.ui.PagerAdapter;
 
 public class NavigationDrawerActivity extends AppCompatActivity
@@ -50,6 +53,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
     private NavigationDrawerActivity self;
 
     private boolean toolbarHomeButtonAnimating = false;
+    private View toolbarContainer;
+    private View tabBar;
 
     private enum ActionDrawableState {
         BURGER, ARROW
@@ -57,6 +62,9 @@ public class NavigationDrawerActivity extends AppCompatActivity
 
     private void init() {
         this.toolbar = (Toolbar) findViewById(R.id.toolbar);
+        this.toolbarContainer = findViewById(R.id.toolbar_container);
+        this.tabBar = findViewById(R.id.tab_layout);
+
         this.menu = toolbar.getMenu();
         this.drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -82,15 +90,102 @@ public class NavigationDrawerActivity extends AppCompatActivity
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         viewPager = (ViewPager) findViewById(R.id.main_pager);
-        adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount()/*, new OnCreateListViewListener() {
+        adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), new OnCreateListViewListener() {
             @Override
-            public void onCreateListViewListener(ObservableListView observableListView) {
-                //for now let this animation out
-                //observableListView.setScrollViewCallbacks(self);
+            public void onCreateListViewListener(RecyclerView recyclerView) {
+
+                recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+
+                    private boolean showed = false;
+                    private int totalScrolled = 0;
+
+                    @Override
+                    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                        super.onScrollStateChanged(recyclerView, newState);
+
+                        Log.i("asd",
+
+                        "\nscrolled: "+ totalScrolled + "\npx: " + Utils.convertDpToPixel(120, self.getApplicationContext()) + "\n\n");
+
+                        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                            if (showed || Math.abs(toolbarContainer.getTranslationY()) < toolbar.getHeight()) {
+                                showToolbar();
+                            } else {
+                                hideToolbar();
+                            }
+
+                            showed = false;
+                        }
+                    }
+
+                    @Override
+                    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                        super.onScrolled(recyclerView, dx, dy);
+
+                        totalScrolled += dy;
+
+                        if (totalScrolled < Utils.convertDpToPixel(120, self.getApplicationContext())) {
+                            showToolbar();
+                            showed = true;
+                        }
+
+                        if (!showed) {
+                            if (dy > 0) {
+                                hideToolbarBy(dy);
+                            } else {
+                                showToolbarBy(dy);
+                            }
+                        }
+                    }
+
+                    private void hideToolbarBy(int dy) {
+                        if (cannotHideMore(dy)) {
+                            toolbarContainer.setTranslationY(-tabBar.getBottom());
+                        } else {
+                            toolbarContainer.setTranslationY(toolbarContainer.getTranslationY() - dy);
+                        }
+                    }
+
+                    private boolean cannotHideMore(int dy) {
+                        return Math.abs(toolbarContainer.getTranslationY() - dy) > tabBar.getBottom();
+                    }
+
+                    private void showToolbarBy(int dy) {
+                        if (cannotShowMore(dy)) {
+                            toolbarContainer.setTranslationY(0);
+                        } else {
+                            toolbarContainer.setTranslationY(toolbarContainer.getTranslationY() - dy);
+                        }
+                    }
+                    private boolean cannotShowMore(int dy) {
+                        return toolbarContainer.getTranslationY() - dy > 0;
+                    }
+                });
             }
-        }*/);
+        });
+
         viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        //TODO change page change listener
+        final ViewPager.OnPageChangeListener tabListener = new TabLayout.TabLayoutOnPageChangeListener(tabLayout);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                tabListener.onPageScrolled(position, positionOffset, positionOffsetPixels);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                tabListener.onPageSelected(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                tabListener.onPageScrollStateChanged(state);
+                showToolbar(100);
+            }
+        });
+
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -187,6 +282,27 @@ public class NavigationDrawerActivity extends AppCompatActivity
         // Hide the search view
         searchContainer.setVisibility(View.GONE);
         searchClearButton.setVisibility(View.GONE);
+    }
+
+    private void showToolbar() {
+        toolbarContainer
+                .animate()
+                .translationY(0).setDuration(100)
+                .start();
+    }
+
+    private void showToolbar(long duration) {
+        toolbarContainer
+                .animate()
+                .translationY(0).setDuration(duration)
+                .start();
+    }
+
+    private void hideToolbar() {
+        toolbarContainer
+                .animate()
+                .translationY(-tabBar.getBottom())
+                .start();
     }
 
     @Override
