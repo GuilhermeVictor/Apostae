@@ -3,63 +3,53 @@
     <string-array name="sport_names">
         <item>@string/archery</item>
         <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
-        <item>@string/athletics</item>
         <item>@string/badminton</item>
-        <item>@string/basketball</item>
-        <item>@string/basketball</item>
-        <item>@string/basketball</item>
-        <item>@string/basketball</item>
-        <item>@string/basketball</item>
         <item>@string/basketball</item>
         <item>@string/boxing</item>
         <item>@string/canoe</item>
         <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
-        <item>@string/cycling</item>
+        <item>@string/diving</item>
+        <item>@string/equestrian</item>
+        <item>@string/fencing</item>
+        <item>@string/football</item>
+        <item>@string/golf</item>
+        <item>@string/gymnastics</item>
+        <item>@string/handball</item>
+        <item>@string/hockey</item>
+        <item>@string/judo</item>
+        <item>@string/modern_pentathlon</item>
+        <item>@string/rowing</item>
+        <item>@string/rugby</item>
+        <item>@string/sailing</item>
+        <item>@string/shooting</item>
+        <item>@string/swimming</item>
+        <item>@string/taekwondo</item>
+        <item>@string/tennis</item>
+        <item>@string/trampoline</item>
+        <item>@string/triathlon</item>
         <item>@string/volleyball</item>
+        <item>@string/water_polo</item>
+    </string-array>
+
+
+    <string-array name="popular_title">
+        <item>@string/volleyball</item>
+        <item>@string/athletics</item>
+        <item>@string/sailing</item>
+        <item>@string/judo</item>
+    </string-array>
+
+    <string-array name="popular_description">
+        <item>@string/description1</item>
+        <item>@string/description2</item>
+        <item>@string/description3</item>
+        <item>@string/description4</item>
+    </string-array>
+
+    <string-array name="popular_odds">
+        <item>@string/odds1</item>
+        <item>@string/odds2</item>
+        <item>@string/odds3</item>
+        <item>@string/odds4</item>
     </string-array>
 </resources>

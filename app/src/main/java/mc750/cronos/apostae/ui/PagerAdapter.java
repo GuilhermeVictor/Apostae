@@ -8,6 +8,7 @@ import android.util.Log;
 import mc750.cronos.apostae.library.ObservableScrollViewFragment;
 import mc750.cronos.apostae.library.OnCreateListViewListener;
 import mc750.cronos.apostae.main.OlympicSportListFragment;
+import mc750.cronos.apostae.main.PopularListFragment;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
@@ -32,7 +33,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 break;
 
             case 1:
-                OlympicSportListFragment tab2 = new OlympicSportListFragment();
+                PopularListFragment tab2 = new PopularListFragment();
                 tab = tab2;
                 break;
 

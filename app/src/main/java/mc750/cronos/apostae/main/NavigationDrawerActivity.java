@@ -32,12 +32,11 @@ import android.widget.TextView;
 
 import java.lang.reflect.Field;
 
-import mc750.cronos.apostae.library.OnCreateListViewListener;
 import mc750.cronos.apostae.R;
 import mc750.cronos.apostae.ui.PagerAdapter;
 
 public class NavigationDrawerActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, OlympicSportListFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OlympicSportListFragment.OnFragmentInteractionListener, PopularListFragment.OnFragmentInteractionListener {
 
     private EditText toolbarSearchView;
     private View searchContainer;

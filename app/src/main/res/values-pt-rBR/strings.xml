@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="olimpic_sport">Modalidades</string>
+    <string name="popular">Populares</string>
+
+    <!-- Olympic sport names -->
+    <string name="archery">Tiro com arco</string>
+    <string name="athletics">Atletismo</string>
+    <string name="badminton">Badminton</string>
+    <string name="basketball">Basquetebol</string>
+    <string name="boxing">Boxe</string>
+    <string name="canoe">Canoagem</string>
+    <string name="cycling">Ciclismo</string>
+    <string name="diving">Mergulho</string>
+    <string name="equestrian">Hipismo</string>
+    <string name="fencing">Esgrima</string>
+    <string name="football">Futebol</string>
+    <string name="golf">Golfe</string>
+    <string name="gymnastics">Ginástica</string>
+    <string name="handball">Handebol</string>
+    <string name="hockey">Hóquei</string>
+    <string name="judo">Judô</string>
+    <string name="modern_pentathlon">Pentatlo moderno</string>
+    <string name="rowing">Remo</string>
+    <string name="rugby">Rugby</string>
+    <string name="sailing">Vela</string>
+    <string name="shooting">Tiro</string>
+    <string name="swimming">Natação</string>
+    <string name="taekwondo">Taekwondo</string>
+    <string name="tennis">Tênis</string>
+    <string name="trampoline">Saltos ornamentais</string>
+    <string name="triathlon">Triatlo</string>
+    <string name="volleyball">Voleibol</string>
+    <string name="water_polo">Pólo aquático;</string>
+
+    <string name="description1">Final Masculino</string>
+    <string name="description2">400m com Barreiras Feminino</string>
+    <string name="description3">RS:X Masculino</string>
+    <string name="description4">Até 60kg Masculino</string>
+
+    <string name="odds1">Polônia 38% vs Brasil 62%</string>
+    <string name="odds2">Eva Vital (POR) 29%</string>
+    <string name="odds3">Dorian van Rijsselberghe (NED) 45%</string>
+    <string name="odds4">Hiroaki Hiraoka (JAP) 25%</string>
+
+</resources>

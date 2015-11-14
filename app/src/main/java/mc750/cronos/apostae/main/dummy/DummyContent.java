@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.
- * <p/>
+ * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
 public class DummyContent {
@@ -28,15 +28,6 @@ public class DummyContent {
         addItem(new DummyItem("1", "Item 1"));
         addItem(new DummyItem("2", "Item 2"));
         addItem(new DummyItem("3", "Item 3"));
-        addItem(new DummyItem("4", "Item 1"));
-        addItem(new DummyItem("5", "Item 2"));
-        addItem(new DummyItem("6", "Item 3"));
-        addItem(new DummyItem("7", "Item 1"));
-        addItem(new DummyItem("8", "Item 2"));
-        addItem(new DummyItem("9", "Item 3"));
-        addItem(new DummyItem("10", "Item 1"));
-        addItem(new DummyItem("11", "Item 2"));
-        addItem(new DummyItem("12", "Item 3"));
     }
 
     private static void addItem(DummyItem item) {
