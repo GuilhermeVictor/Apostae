@@ -54,10 +54,10 @@ public class PopularListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_olympicsportlist_grid, container, false);
+        View view = inflater.inflate(R.layout.fragment_popular_list, container, false);
 
         // Set the adapter
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.popular_recycler_view);
         mRecyclerView.setAdapter(mAdapter);
 
         //if (this.createListViewListener != null)
@@ -113,7 +113,7 @@ public class PopularListFragment extends Fragment {
         private final RecyclerView mRecyclerView;
 
         public PopularViewHolder(View view) {
-            mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+            mRecyclerView = (RecyclerView) view.findViewById(R.id.popular_recycler_view);
         }
 
         public void initViews(LinearLayoutManager lm) {

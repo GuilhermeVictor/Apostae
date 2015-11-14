@@ -3,4 +3,7 @@
     <color name="colorPrimary">#388E3C</color>
     <color name="colorPrimaryDark">#1B5E20</color>
     <color name="colorAccent">#B71C1C</color>
+    <color name="popularTextCardTransparent">#33000000</color>
+    <color name="whiteStrong">#FFF</color>
+    <color name="whiteWeak">#B3FFFFFF</color>
 </resources>
