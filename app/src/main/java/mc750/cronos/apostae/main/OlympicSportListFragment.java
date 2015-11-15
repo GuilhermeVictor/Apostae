@@ -14,7 +14,6 @@ import mc750.cronos.apostae.R;
 import mc750.cronos.apostae.library.ObservableScrollViewFragment;
 import mc750.cronos.apostae.ui.OlympicSportsAdapter;
 import mc750.cronos.apostae.library.OnCreateListViewListener;
-import mc750.cronos.apostae.main.dummy.DummyContent;
 
 import com.tonicartos.superslim.LayoutManager;
 
@@ -116,9 +115,7 @@ public class OlympicSportListFragment extends Fragment implements AbsListView.On
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
-            // Notify the active callbacks interface (the activity, if the
-            // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+            
         }
     }
 
