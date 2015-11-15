@@ -80,8 +80,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
         setSupportActionBar(this.toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.olimpic_sport));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.popular));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.olimpic_sport));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         viewPager = (ViewPager) findViewById(R.id.main_pager);
