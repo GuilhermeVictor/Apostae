@@ -24,5 +24,6 @@
         android:textColor="#222222"
         android:textSize="16sp"
         tools:text="Text Line Item"
+        android:layout_gravity="center"
         />
 </LinearLayout>

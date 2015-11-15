@@ -88,13 +88,6 @@ public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewH
         // Overrides xml attrs, could use different layouts too.
         if (item.isHeader) {
             lp.headerDisplay = GridSLM.LayoutParams.HEADER_STICKY;// ALIGN_START;
-            /*
-            if (lp.isHeaderInline() || (mMarginsFixed && !lp.isHeaderOverlay())) {
-                lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-            } else {
-                lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
-            }*/
-            //lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
 
             lp.headerEndMarginIsAuto = false;
             lp.headerStartMarginIsAuto = false;
