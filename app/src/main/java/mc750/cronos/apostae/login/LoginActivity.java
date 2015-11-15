@@ -3,6 +3,7 @@ package mc750.cronos.apostae.login;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -33,6 +34,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mc750.cronos.apostae.R;
+import mc750.cronos.apostae.library.Utils;
+import mc750.cronos.apostae.main.NavigationDrawerActivity;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -63,11 +66,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private LoginActivity self;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        this.self = this;
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -90,6 +96,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
                 attemptLogin();
+            }
+        });
+
+        final Button btnSignup = (Button) findViewById(R.id.btn_sign_up);
+        btnSignup.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utils.snackBar(v, getResources().getString(R.string.not_implemented));
+            }
+        });
+
+        final TextView txtGuest = (TextView) findViewById(R.id.action_guest);
+        txtGuest.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(self, NavigationDrawerActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -163,7 +187,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (TextUtils.isEmpty(password)) {
+            mPasswordView.setError(getString(R.string.error_field_required));
+            focusView = mPasswordView;
+            cancel = true;
+        }
+        else if (!isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -178,6 +207,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
+        }
+
+        if (!cancel) {
+            cancel = true;
+            focusView = mEmailView;
+            mEmailView.setError(getString(R.string.account_not_exists));
         }
 
         if (cancel) {

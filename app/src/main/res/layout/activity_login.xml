@@ -21,16 +21,26 @@
         <ScrollView android:id="@+id/login_form" android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <LinearLayout android:id="@+id/email_login_form" android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/apostae"
+                    android:layout_marginTop="-30dp"
+                    android:layout_marginBottom="-20dp" />
+
                 <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    >
 
                     <AutoCompleteTextView android:id="@+id/email" android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:hint="@string/prompt_email"
                         android:inputType="textEmailAddress" android:maxLines="1"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -42,14 +52,37 @@
                         android:imeActionId="@+id/login"
                         android:imeActionLabel="@string/action_sign_in_short"
                         android:imeOptions="actionUnspecified" android:inputType="textPassword"
-                        android:maxLines="1" android:singleLine="true" />
+                        android:maxLines="1" android:singleLine="true"
+                        />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <Button android:id="@+id/email_sign_in_button" style="?android:textAppearanceSmall"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:layout_marginTop="16dp" android:text="@string/action_sign_in"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/whiteStrong"
+                    />
+
+                <Button style="?android:textAppearanceSmall"
+                    android:id="@+id/btn_sign_up"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp" android:text="@string/action_sign_up"
+                    android:textStyle="bold"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/whiteStrong"
+                    />
+
+                <TextView
+                    android:id="@+id/action_guest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_sign_in_guest"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    />
 
             </LinearLayout>
         </ScrollView>

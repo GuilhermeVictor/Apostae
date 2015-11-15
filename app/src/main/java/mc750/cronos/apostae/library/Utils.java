@@ -3,7 +3,9 @@ package mc750.cronos.apostae.library;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.design.widget.Snackbar;
 import android.util.DisplayMetrics;
+import android.view.View;
 
 public class Utils {
 
@@ -33,5 +35,9 @@ public class Utils {
         DisplayMetrics metrics = resources.getDisplayMetrics();
         float dp = px / (metrics.densityDpi / 160f);
         return dp;
+    }
+
+    public static void snackBar(View view, String text) {
+        Snackbar.make(view, text, Snackbar.LENGTH_LONG).show();
     }
 }
