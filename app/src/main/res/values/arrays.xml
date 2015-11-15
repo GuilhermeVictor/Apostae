@@ -31,6 +31,36 @@
         <item>@string/water_polo</item>
     </string-array>
 
+    <string-array name="sport_drawables">
+        <item>@drawable/tiro_com_arco</item>
+        <item>@drawable/atletismo</item>
+        <item>@drawable/badminton</item>
+        <item>@drawable/basquetebol</item>
+        <item>@drawable/boxe</item>
+        <item>@drawable/canoagem_velocidade</item>
+        <item>@drawable/ciclismo_de_estrada</item>
+        <item>@drawable/mergulho</item>
+        <item>@drawable/hipismo_adestramento</item>
+        <item>@drawable/esgrima</item>
+        <item>@drawable/futebol</item>
+        <item>@drawable/golfe</item>
+        <item>@drawable/ginastica_artistica</item>
+        <item>@drawable/handebol</item>
+        <item>@drawable/hoquei_sobre_grama</item>
+        <item>@drawable/judo</item>
+        <item>@drawable/pentatlo_moderno</item>
+        <item>@drawable/remo</item>
+        <item>@drawable/rugby</item>
+        <item>@drawable/vela</item>
+        <item>@drawable/tiro_esportivo</item>
+        <item>@drawable/natacao_picto</item>
+        <item>@drawable/taekwondo</item>
+        <item>@drawable/tenis</item>
+        <item>@drawable/saltos_ornamentais</item>
+        <item>@drawable/triatlo</item>
+        <item>@drawable/voleibol</item>
+        <item>@drawable/polo_aquatico</item>
+    </string-array>
 
     <string-array name="popular_title">
         <item>@string/taekwondo</item>

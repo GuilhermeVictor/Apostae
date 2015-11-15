@@ -1,6 +1,7 @@
 package mc750.cronos.apostae.ui;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -12,7 +13,6 @@ import com.tonicartos.superslim.GridSLM;
 import java.util.ArrayList;
 
 import mc750.cronos.apostae.R;
-import mc750.cronos.apostae.ui.OlympicSportViewHolder;
 
 public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewHolder> {
 
@@ -30,6 +30,7 @@ public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewH
         mContext = context;
 
         final String[] sportNames = context.getResources().getStringArray(R.array.sport_names);
+        final TypedArray popularDrawables = context.getResources().obtainTypedArray(R.array.sport_drawables);
 
         mItems = new ArrayList<>();
 
@@ -46,9 +47,9 @@ public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewH
                 sectionFirstPosition = i + headerCount;
                 lastHeader = header;
                 headerCount += 1;
-                mItems.add(new LineItem(header, true, sectionManager, sectionFirstPosition));
+                mItems.add(new LineItem(header, 0, true, sectionManager, sectionFirstPosition));
             }
-            mItems.add(new LineItem(sportNames[i], false, sectionManager, sectionFirstPosition));
+            mItems.add(new LineItem(sportNames[i], popularDrawables.getResourceId(i, -1), false, sectionManager, sectionFirstPosition));
         }
     }
 
@@ -78,7 +79,10 @@ public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewH
         final LineItem item = mItems.get(position);
         final View itemView = holder.itemView;
 
-        holder.bindItem(item.text);
+        if (!item.isHeader)
+            holder.bindItem(item.text, item.resid);
+        else
+            holder.bindItem(item.text);
 
         final GridSLM.LayoutParams lp = GridSLM.LayoutParams.from(itemView.getLayoutParams());
         // Overrides xml attrs, could use different layouts too.
@@ -135,10 +139,12 @@ public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewH
 
         public String text;
 
-        public LineItem(String text, boolean isHeader, int sectionManager,
-                        int sectionFirstPosition) {
+        private final int resid;
+
+        public LineItem(String text, int resid, boolean isHeader, int sectionManager, int sectionFirstPosition) {
             this.isHeader = isHeader;
             this.text = text;
+            this.resid = resid;
             this.sectionManager = sectionManager;
             this.sectionFirstPosition = sectionFirstPosition;
         }
