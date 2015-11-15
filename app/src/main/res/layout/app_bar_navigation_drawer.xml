@@ -5,22 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="false"
     tools:context="mc750.cronos.apostae.main.NavigationDrawerActivity">
-<!--
-https://github.com/ksoichiro/Android-ObservableScrollView
-https://www.google.com.br/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=action%20bar%20like%20whatsapp%20android
--->
-<!--
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
--->
-
-       <!-- <android.support.design.widget.AppBarLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay"
-            android:background="?attr/colorPrimary" >-->
 
         <android.support.v4.view.ViewPager
             android:id="@+id/main_pager"
@@ -88,19 +72,7 @@ https://www.google.com.br/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
         </android.support.design.widget.AppBarLayout>
-<!--
-        </android.support.design.widget.AppBarLayout>
--->
-
-
-<!--
-    </LinearLayout>-->
 
     <include layout="@layout/content_navigation_drawer" />
-
-    <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
 
 </android.support.design.widget.CoordinatorLayout>

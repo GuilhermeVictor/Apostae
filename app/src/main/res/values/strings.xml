@@ -58,14 +58,16 @@
     <string name="volleyball">Volleyball</string>
     <string name="water_polo">Water Polo</string>
 
-    <string name="description1">Final Male</string>
-    <string name="description2">400m Hurdles Female</string>
-    <string name="description3">RS:X Male</string>
-    <string name="description4">60kg Male</string>
+    <string name="description1">Preliminary 57kg Female</string>
+    <string name="description2">Final Keirin Male</string>
+    <string name="description3">Quarter Finals Female</string>
+    <string name="description4">Semi Final on Team Mixed</string>
+    <string name="description5">Final 100m Back Female</string>
 
-    <string name="odds1">Polony 38% vs Brazil 62%</string>
-    <string name="odds2">Eva Vital (POR) 29%</string>
-    <string name="odds3">Dorian van Rijsselberghe (NED) 45%</string>
-    <string name="odds4">Hiroaki Hiraoka (JAP) 25%</string>
+    <string name="odds1">Yuzhuo Hou (CHN) 40%</string>
+    <string name="odds2">Chris Hoy (GBR) 27%</string>
+    <string name="odds3">United States 54%</string>
+    <string name="odds4">Germany 38%</string>
+    <string name="odds5">Emily Seebohm (AUS) 29%</string>
 
 </resources>

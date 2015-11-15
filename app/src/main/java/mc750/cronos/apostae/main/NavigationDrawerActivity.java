@@ -7,14 +7,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -34,8 +30,7 @@ import android.widget.TextView;
 import java.lang.reflect.Field;
 
 import mc750.cronos.apostae.R;
-import mc750.cronos.apostae.library.OnCreateListViewListener;
-import mc750.cronos.apostae.library.Utils;
+import mc750.cronos.apostae.library.ActionBarHelper;
 import mc750.cronos.apostae.ui.PagerAdapter;
 
 public class NavigationDrawerActivity extends AppCompatActivity
@@ -90,77 +85,40 @@ public class NavigationDrawerActivity extends AppCompatActivity
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         viewPager = (ViewPager) findViewById(R.id.main_pager);
-        adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), new OnCreateListViewListener() {
+        adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), new ActionBarHelper() {
             @Override
-            public void onCreateListViewListener(RecyclerView recyclerView) {
+            public Context getApplicationContext() {
+                return self.getApplicationContext();
+            }
 
-                recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void showToolbar() {
+                self.showToolbar();
+            }
 
-                    private boolean showed = false;
-                    private int totalScrolled = 0;
+            @Override
+            public void hideToolbar() {
+                self.hideToolbar();
+            }
 
-                    @Override
-                    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                        super.onScrollStateChanged(recyclerView, newState);
+            @Override
+            public void showToolbarBy(int dy) {
+                self.showToolbarBy(dy);
+            }
 
-                        Log.i("asd",
+            @Override
+            public void hideToolbarBy(int dy) {
+                self.hideToolbarBy(dy);
+            }
 
-                        "\nscrolled: "+ totalScrolled + "\npx: " + Utils.convertDpToPixel(120, self.getApplicationContext()) + "\n\n");
+            @Override
+            public int getToolbarHeight() {
+                return self.toolbar.getHeight();
+            }
 
-                        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                            if (showed || Math.abs(toolbarContainer.getTranslationY()) < toolbar.getHeight()) {
-                                showToolbar();
-                            } else {
-                                hideToolbar();
-                            }
-
-                            showed = false;
-                        }
-                    }
-
-                    @Override
-                    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                        super.onScrolled(recyclerView, dx, dy);
-
-                        totalScrolled += dy;
-
-                        if (totalScrolled < Utils.convertDpToPixel(120, self.getApplicationContext())) {
-                            showToolbar();
-                            showed = true;
-                        }
-
-                        if (!showed) {
-                            if (dy > 0) {
-                                hideToolbarBy(dy);
-                            } else {
-                                showToolbarBy(dy);
-                            }
-                        }
-                    }
-
-                    private void hideToolbarBy(int dy) {
-                        if (cannotHideMore(dy)) {
-                            toolbarContainer.setTranslationY(-tabBar.getBottom());
-                        } else {
-                            toolbarContainer.setTranslationY(toolbarContainer.getTranslationY() - dy);
-                        }
-                    }
-
-                    private boolean cannotHideMore(int dy) {
-                        return Math.abs(toolbarContainer.getTranslationY() - dy) > tabBar.getBottom();
-                    }
-
-                    private void showToolbarBy(int dy) {
-                        if (cannotShowMore(dy)) {
-                            toolbarContainer.setTranslationY(0);
-                        } else {
-                            toolbarContainer.setTranslationY(toolbarContainer.getTranslationY() - dy);
-                        }
-                    }
-                    private boolean cannotShowMore(int dy) {
-                        return toolbarContainer.getTranslationY() - dy > 0;
-                    }
-                });
+            @Override
+            public float getToolbarTranslationY() {
+                return self.toolbarContainer.getTranslationY();
             }
         });
 
@@ -203,15 +161,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
             }
         });
         viewPager.setCurrentItem(tabLayout.getSelectedTabPosition());
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -271,7 +220,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
                     }
                 }
 
-                //TODO fix this
                 if (drawer.isDrawerOpen(findViewById(R.id.nav_view)))
                     drawer.closeDrawer(findViewById(R.id.nav_view));
                 else
@@ -287,7 +235,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
     private void showToolbar() {
         toolbarContainer
                 .animate()
-                .translationY(0).setDuration(100)
+                .translationY(0)
                 .start();
     }
 
@@ -303,6 +251,30 @@ public class NavigationDrawerActivity extends AppCompatActivity
                 .animate()
                 .translationY(-tabBar.getBottom())
                 .start();
+    }
+
+    private void hideToolbarBy(int dy) {
+        if (cannotHideMore(dy)) {
+            toolbarContainer.setTranslationY(-tabBar.getBottom());
+        } else {
+            toolbarContainer.setTranslationY(toolbarContainer.getTranslationY() - dy);
+        }
+    }
+
+    private boolean cannotHideMore(int dy) {
+        return Math.abs(toolbarContainer.getTranslationY() - dy) > tabBar.getBottom();
+    }
+
+    private void showToolbarBy(int dy) {
+        if (cannotShowMore(dy)) {
+            toolbarContainer.setTranslationY(0);
+        } else {
+            toolbarContainer.setTranslationY(toolbarContainer.getTranslationY() - dy);
+        }
+    }
+
+    private boolean cannotShowMore(int dy) {
+        return toolbarContainer.getTranslationY() - dy > 0;
     }
 
     @Override
@@ -445,4 +417,10 @@ public class NavigationDrawerActivity extends AppCompatActivity
     public void onFragmentInteraction(String id) {
 
     }
+
+/*
+    public void onClick(View view) {
+        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+    }*/
 }

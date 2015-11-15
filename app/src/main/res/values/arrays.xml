@@ -33,10 +33,11 @@
 
 
     <string-array name="popular_title">
-        <item>@string/volleyball</item>
-        <item>@string/athletics</item>
-        <item>@string/sailing</item>
-        <item>@string/judo</item>
+        <item>@string/taekwondo</item>
+        <item>@string/cycling</item>
+        <item>@string/handball</item>
+        <item>@string/equestrian</item>
+        <item>@string/swimming</item>
     </string-array>
 
     <string-array name="popular_description">
@@ -44,6 +45,7 @@
         <item>@string/description2</item>
         <item>@string/description3</item>
         <item>@string/description4</item>
+        <item>@string/description5</item>
     </string-array>
 
     <string-array name="popular_odds">
@@ -51,5 +53,14 @@
         <item>@string/odds2</item>
         <item>@string/odds3</item>
         <item>@string/odds4</item>
+        <item>@string/odds5</item>
+    </string-array>
+
+    <string-array name="popular_drawable">
+        <item>@drawable/taekondo</item>
+        <item>@drawable/ciclismo</item>
+        <item>@drawable/handball</item>
+        <item>@drawable/hipismo_cce</item>
+        <item>@drawable/natacao</item>
     </string-array>
 </resources>
