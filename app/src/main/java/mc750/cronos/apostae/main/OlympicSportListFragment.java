@@ -115,7 +115,7 @@ public class OlympicSportListFragment extends Fragment implements AbsListView.On
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
-            
+
         }
     }
 

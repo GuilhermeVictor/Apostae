@@ -76,4 +76,23 @@
     <string name="odds4">Germany 38%</string>
     <string name="odds5">Emily Seebohm (AUS) 29%</string>
 
+    <string name="bet_top_desc">Preliminary 400m with Hurdles Female</string>
+    <string name="bet_top_date">Mon, Jun 10, 8:00 AM</string>
+
+    <string name="bet_button">betthis!</string>
+
+    <string name="bet_odds1">Odd: 28% Winning: $1.57/$1.00</string>
+    <string name="bet_odds2">Odd: 25% Winning: $1.61/$1.00</string>
+    <string name="bet_odds3">Odd: 17% Winning: $1.69/$1.00</string>
+    <string name="bet_odds4">Odd: 29% Winning: $1.48/$1.00</string>
+    <string name="bet_odds5">Odd: 1% Winning: $1.94/$1.00</string>
+    <string name="bet_odds6">Odd: 0% Winning: $2.00/$1.00</string>
+
+    <string name="bet_bet1">Zuzana Hejnová</string>
+    <string name="bet_bet2">T\'erea Brown</string>
+    <string name="bet_bet3">Eilidh Child</string>
+    <string name="bet_bet4">Eva Vital</string>
+    <string name="bet_bet5">Sarah Wells</string>
+    <string name="bet_bet6">Eglė Stasiūnaitė</string>
+
 </resources>
