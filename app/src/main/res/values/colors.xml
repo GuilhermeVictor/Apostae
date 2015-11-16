@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#388E3C</color>
+    <color name="colorPrimary">#409F00</color>
     <color name="colorPrimaryDark">#1B5E20</color>
     <color name="colorAccent">#FFFFFF</color>
+    <color name="colorSecondary">#388E3C</color>
     <color name="blueStrong">#004B88</color>
     <color name="blueWeak">#0075D5</color>
     <color name="popularTextCardTransparent">#33000000</color>

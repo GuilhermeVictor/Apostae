@@ -39,7 +39,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularViewHolder> {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_popular_line_item, parent, false);
 
-        return new PopularViewHolder(view, this.mContext);
+        return new PopularViewHolder(view);
     }
 
     @Override

@@ -80,4 +80,25 @@
     <string name="bet_bet5">Sarah Wells</string>
     <string name="bet_bet6">Eglė Stasiūnaitė</string>
 
+    <string name="bet_title1">Bateria 1</string>
+    <string name="bet_title2">Bateria 3</string>
+    <string name="bet_title3">Bateria 5</string>
+    <string name="bet_title4">Bateria 2</string>
+    <string name="bet_title5">Bateria 4</string>
+    <string name="bet_title6">Bateria 1</string>
+
+    <string name="bet_date1">Ter, Jun 14, 13:30</string>
+    <string name="bet_date2">Ter, Jun 14, 15:40</string>
+    <string name="bet_date3">Ter, Jun 14, 16:00</string>
+    <string name="bet_date4">Ter, Jun 14, 15:30</string>
+    <string name="bet_date5">Qua, Jun 15, 17:30</string>
+    <string name="bet_date6">Qui, Jun 16, 13:30</string>
+
+    <string name="bet_desc1">Quartas de Final 100m Masculino</string>
+    <string name="bet_desc2">Semi Final 400m Feminino</string>
+    <string name="bet_desc3">Semi Final 100m Masculino</string>
+    <string name="bet_desc4">Oitavas de Final Decatlo Masculino</string>
+    <string name="bet_desc5">Final Marcha Atlética 20Km Feminino</string>
+    <string name="bet_desc6">Preliminares 400m com Barreiras Feminino</string>
+
 </resources>

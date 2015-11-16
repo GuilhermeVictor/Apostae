@@ -64,9 +64,9 @@
     <string name="volleyball">Volleyball</string>
     <string name="water_polo">Water Polo</string>
 
-    <string name="description1">Preliminary 57kg Female</string>
+    <string name="description1">Preliminary 57Kg Female</string>
     <string name="description2">Final Keirin Male</string>
-    <string name="description3">Quarter Finals Female</string>
+    <string name="description3">Quarterfinals Female</string>
     <string name="description4">Semi Final on Team Mixed</string>
     <string name="description5">Final 100m Back Female</string>
 
@@ -94,5 +94,27 @@
     <string name="bet_bet4">Eva Vital</string>
     <string name="bet_bet5">Sarah Wells</string>
     <string name="bet_bet6">Eglė Stasiūnaitė</string>
+
+    <string name="bet_title1">Race 1</string>
+    <string name="bet_title2">Race 3</string>
+    <string name="bet_title3">Race 5</string>
+    <string name="bet_title4">Race 2</string>
+    <string name="bet_title5">Race 4</string>
+    <string name="bet_title6">Race 1</string>
+
+    <string name="bet_date1">Tue, Jun 14, 1:30 PM</string>
+    <string name="bet_date2">Tue, Jun 14, 3:40 PM</string>
+    <string name="bet_date3">Tue, Jun 14, 4:00 PM</string>
+    <string name="bet_date4">Tue, Jun 14, 3:30 PM</string>
+    <string name="bet_date5">Wed, Jun 15, 5:30 PM</string>
+    <string name="bet_date6">Thu, Jun 16, 1:30 PM</string>
+
+    <string name="bet_desc1">Quarter Finals 100m Male</string>
+    <string name="bet_desc2">Semi Final 400m Female</string>
+    <string name="bet_desc3">Semi Final 100m Male</string>
+    <string name="bet_desc4">Quarter-final Decathlon Male</string>
+    <string name="bet_desc5">Final Race Walking 20Km Female</string>
+    <string name="bet_desc6">Preliminary 400m with Hurdles Female</string>
+
 
 </resources>

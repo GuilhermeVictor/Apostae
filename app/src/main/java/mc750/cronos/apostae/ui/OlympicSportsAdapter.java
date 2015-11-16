@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,13 @@ import android.view.ViewGroup;
 import com.tonicartos.superslim.GridSLM;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 import mc750.cronos.apostae.R;
+import mc750.cronos.apostae.library.Utils;
 
 public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewHolder> {
 
@@ -32,6 +38,15 @@ public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewH
         final String[] sportNames = context.getResources().getStringArray(R.array.sport_names);
         final TypedArray popularDrawables = context.getResources().obtainTypedArray(R.array.sport_drawables);
 
+        List<Pair<String, Integer>> pairs = new LinkedList<Pair<String, Integer>>();
+
+        for (int i = 0; i < sportNames.length; i++)
+        {
+            pairs.add(new Pair<String, Integer>(sportNames[i], popularDrawables.getResourceId(i, -1)));
+        }
+
+        Collections.sort(pairs, new PairStringIntegerComparator());
+
         mItems = new ArrayList<>();
 
         //Insert headers into list of items.
@@ -39,8 +54,8 @@ public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewH
         int sectionManager = -1;
         int headerCount = 0;
         int sectionFirstPosition = 0;
-        for (int i = 0; i < sportNames.length; i++) {
-            String header = sportNames[i].substring(0, 1);
+        for (int i = 0; i < pairs.size(); i++) {
+            String header = pairs.get(i).first.substring(0, 1);
             if (!TextUtils.equals(lastHeader, header)) {
                 // Insert new header view and update section data.
                 sectionManager = (sectionManager + 1) % 2;
@@ -49,7 +64,7 @@ public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewH
                 headerCount += 1;
                 mItems.add(new LineItem(header, 0, true, sectionManager, sectionFirstPosition));
             }
-            mItems.add(new LineItem(sportNames[i], popularDrawables.getResourceId(i, -1), false, sectionManager, sectionFirstPosition));
+            mItems.add(new LineItem(pairs.get(i).first, pairs.get(i).second, false, sectionManager, sectionFirstPosition));
         }
     }
 
@@ -140,6 +155,14 @@ public class OlympicSportsAdapter extends RecyclerView.Adapter<OlympicSportViewH
             this.resid = resid;
             this.sectionManager = sectionManager;
             this.sectionFirstPosition = sectionFirstPosition;
+        }
+    }
+
+    public class PairStringIntegerComparator implements Comparator<Pair<String, Integer>> {
+
+        @Override
+        public int compare(Pair<String, Integer> lhs, Pair<String, Integer> rhs) {
+            return lhs.first.compareTo(rhs.first);
         }
     }
 }

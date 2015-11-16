@@ -20,7 +20,7 @@ public class PopularViewHolder extends RecyclerView.ViewHolder {
     private TextView oddsTextView;
     private ImageView imageView;
 
-    public PopularViewHolder(View view, final Context context) {
+    public PopularViewHolder(final View view) {
         super(view);
 
         titleTextView = (TextView) view.findViewById(R.id.fragment_item_popular_title_text);
@@ -31,8 +31,8 @@ public class PopularViewHolder extends RecyclerView.ViewHolder {
         view.findViewById(R.id.popular_clickable).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, BetChooseActivity.class);
-                context.startActivity(intent);
+                Intent intent = new Intent(view.getContext(), BetChooseActivity.class);
+                view.getContext().startActivity(intent);
             }
         });
     }
