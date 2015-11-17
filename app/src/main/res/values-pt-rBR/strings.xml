@@ -16,6 +16,14 @@
 
     <string name="not_implemented">Não implementado</string>
 
+    <string name="bet_dialogTitle">Apostar</string>
+    <string name="bet_positive">Confirmar</string>
+    <string name="bet_negative">Cancelar</string>
+    <string name="bet_neutral">Alterar Valor</string>
+
+    <string name="bet_odds">(odd)</string>
+    <string name="bet_estimated_gain">(ganho estimado)</string>
+
     <string name="olimpic_sport">Modalidades</string>
     <string name="popular">Populares</string>
 
