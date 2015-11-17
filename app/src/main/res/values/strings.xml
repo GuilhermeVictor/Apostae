@@ -17,6 +17,11 @@
 
     <string name="not_implemented">Not implemented</string>
 
+    <string name="drawer_home">Home</string>
+    <string name="drawer_stared">Stared</string>
+    <string name="drawer_mybets">My Bets</string>
+    <string name="drawer_leaderboard">Leaderboard</string>
+
     <string name="bet_dialogTitle">Bet</string>
     <string name="bet_positive">Confirm</string>
     <string name="bet_negative">Cancel</string>

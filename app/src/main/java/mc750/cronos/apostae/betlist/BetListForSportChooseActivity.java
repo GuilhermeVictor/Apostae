@@ -1,6 +1,8 @@
 package mc750.cronos.apostae.betlist;
 
+import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +13,13 @@ import android.view.View;
 
 import mc750.cronos.apostae.R;
 import mc750.cronos.apostae.bet.BetChooseActivity;
+import mc750.cronos.apostae.library.Utils;
+import mc750.cronos.apostae.main.NavigationDrawerActivity;
 
-public class BetListForSportChooseActivity extends AppCompatActivity {
+public class BetListForSportChooseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +82,9 @@ public class BetListForSportChooseActivity extends AppCompatActivity {
                 v.getContext().startActivity(intent);
             }
         });
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -92,5 +100,25 @@ public class BetListForSportChooseActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_home) {
+            Intent intent = new Intent(getApplicationContext(), NavigationDrawerActivity.class);
+            startActivity(intent);
+            finish();
+
+            return true;
+        }
+        else {
+            
+            Utils.snackBar(findViewById(android.R.id.content), getString(R.string.not_implemented));
+        }
+        
+        return false;
     }
 }

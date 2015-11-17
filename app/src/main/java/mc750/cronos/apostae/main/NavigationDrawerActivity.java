@@ -3,6 +3,7 @@ package mc750.cronos.apostae.main;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,6 +32,7 @@ import java.lang.reflect.Field;
 
 import mc750.cronos.apostae.R;
 import mc750.cronos.apostae.library.ActionBarHelper;
+import mc750.cronos.apostae.library.Utils;
 import mc750.cronos.apostae.ui.PagerAdapter;
 
 public class NavigationDrawerActivity extends AppCompatActivity
@@ -50,6 +52,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
     private boolean toolbarHomeButtonAnimating = false;
     private View toolbarContainer;
     private View tabBar;
+    private NavigationView navigationView;
 
     private enum ActionDrawableState {
         BURGER, ARROW
@@ -167,8 +170,9 @@ public class NavigationDrawerActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
 
         // Setup search container view
         try {
@@ -304,15 +308,20 @@ public class NavigationDrawerActivity extends AppCompatActivity
         return true;
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        if (id == R.id.nav_home) {
 
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        else {
+            Utils.snackBar(findViewById(android.R.id.content), getString(R.string.not_implemented));
+        }
+
+        return false;
     }
 
 

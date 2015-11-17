@@ -16,6 +16,11 @@
 
     <string name="not_implemented">Não implementado</string>
 
+    <string name="drawer_home">Início</string>
+    <string name="drawer_stared">Favoritas</string>
+    <string name="drawer_mybets">Minhas Apostas</string>
+    <string name="drawer_leaderboard">Pontuação</string>
+
     <string name="bet_dialogTitle">Apostar</string>
     <string name="bet_positive">Confirmar</string>
     <string name="bet_negative">Cancelar</string>
