@@ -1,6 +1,8 @@
 package mc750.cronos.apostae.betlist;
 
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,13 +14,17 @@ import mc750.cronos.apostae.bet.BetChooseActivity;
 
 public class BetListForSportChooseActivity extends AppCompatActivity {
 
+    private DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bet_list_for_sport_choose);
+        setContentView(R.layout.activity_bet_list_for_sport_choose_navigation_drawer);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        this.drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -77,5 +83,14 @@ public class BetListForSportChooseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

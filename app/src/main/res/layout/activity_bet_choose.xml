@@ -158,6 +158,7 @@
                             android:gravity="right">
 
                             <Button
+                                android:id="@+id/btn_bet1"
                                 android:layout_width="90dp"
                                 android:layout_height="28dp"
                                 android:text="@string/bet_button"
@@ -165,7 +166,6 @@
                                 android:fontFamily="sans-serif"
                                 android:textColor="@color/whiteStrong"
                                 android:background="@color/colorPrimary">
-
                             </Button>
 
                         </LinearLayout>
@@ -264,7 +264,8 @@
                                     android:textAllCaps="false"
                                     android:fontFamily="sans-serif"
                                     android:textColor="@color/whiteStrong"
-                                    android:background="@color/colorPrimary">
+                                    android:background="@color/colorPrimary"
+                                    android:id="@+id/btn_bet2">
 
                                 </Button>
 
@@ -362,7 +363,8 @@
                                     android:textAllCaps="false"
                                     android:fontFamily="sans-serif"
                                     android:textColor="@color/whiteStrong"
-                                    android:background="@color/colorPrimary">
+                                    android:background="@color/colorPrimary"
+                                    android:id="@+id/btn_bet3">
 
                                 </Button>
 
@@ -460,7 +462,8 @@
                                     android:textAllCaps="false"
                                     android:fontFamily="sans-serif"
                                     android:textColor="@color/whiteStrong"
-                                    android:background="@color/colorPrimary">
+                                    android:background="@color/colorPrimary"
+                                    android:id="@+id/btn_bet4">
 
                                 </Button>
 
@@ -558,7 +561,8 @@
                                     android:textAllCaps="false"
                                     android:fontFamily="sans-serif"
                                     android:textColor="@color/whiteStrong"
-                                    android:background="@color/colorPrimary">
+                                    android:background="@color/colorPrimary"
+                                    android:id="@+id/btn_bet5">
 
                                 </Button>
 
@@ -656,7 +660,8 @@
                                     android:textAllCaps="false"
                                     android:fontFamily="sans-serif"
                                     android:textColor="@color/whiteStrong"
-                                    android:background="@color/colorPrimary">
+                                    android:background="@color/colorPrimary"
+                                    android:id="@+id/btn_bet6">
 
                                 </Button>
 

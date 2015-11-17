@@ -61,6 +61,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private UserLoginTask mAuthTask = null;
 
+    private GuestLoginTask mGuestTask = null;
+
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
@@ -111,9 +113,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         txtGuest.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(self, NavigationDrawerActivity.class);
-                startActivity(intent);
-                finish();
+
+                // Show a progress spinner, and kick off a background task to
+                // perform the user login attempt.
+                showProgress(true);
+                mGuestTask = new GuestLoginTask();
+                mGuestTask.execute((Void) null);
             }
         });
 
@@ -384,6 +389,33 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected void onCancelled() {
             mAuthTask = null;
+            showProgress(false);
+        }
+    }
+
+    public class GuestLoginTask extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            mGuestTask = null;
+            showProgress(false);
+
+            if (success) {
+                finish();
+            }
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            Intent intent = new Intent(self, NavigationDrawerActivity.class);
+            startActivity(intent);
+
+            return true;
+        }
+
+        @Override
+        protected void onCancelled() {
+            mGuestTask = null;
             showProgress(false);
         }
     }
